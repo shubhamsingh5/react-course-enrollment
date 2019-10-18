@@ -1,0 +1,31 @@
+input[type="checkbox"] {
+    display: none;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+input[type="checkbox"] + span {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #ddecff;
+    border-radius: 3px;
+    transition: all 150ms;
+}
+
+input[type="checkbox"]:checked + span {
+    background: #006dcc;
+}
+
+input[type="checkbox"]:hover + span {
+    box-shadow: 0 0 0 3px #0078c9;
+    cursor: pointer;
+}
+
+input[type="checkbox"] + span {
+    margin-left: 8px;
+}

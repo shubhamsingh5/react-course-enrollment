@@ -1,0 +1,104 @@
+.course {
+    margin: 20px;
+    padding: 16px;
+    width: 60%;
+    background-color: white;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0, 0.2);
+}
+
+.collapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.expanded {
+    max-height: 2000px;
+    transition: max-height 0.5s ease;
+}
+.course__metadata {
+    display: flex;
+    justify-content: space-between;
+}
+
+.course__subject {
+    font-weight: 400;
+    color: white;
+    padding: 2px 4px;
+}
+
+.course__title {
+    cursor: pointer;
+    font-size: 24px;
+    color: #006DCC;
+}
+
+.course__credits {
+    color: #0b5563;
+    font-style: italic;
+}
+
+.course__action {
+    display: flex;
+    justify-content: space-between;
+}
+
+.course__times {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.course__sections {
+    margin-top: 8px;
+}
+.course__subsections {
+    margin-top: 8px;
+    margin-left: 4rem;
+    border-left: 2px solid rgba(0, 0, 0, 0.2);;
+    padding-left: 4rem;
+}
+
+.course__description {
+    font-size: 16px;
+    color: #2c363f;
+}
+
+.btn-add:focus {
+    outline: 0;
+}
+
+.btn-add {
+    width: 120px;
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 16px;
+    outline: none;
+}
+
+.btn-add:active {
+    transform: translateY(2px);
+}
+
+.Psychology {
+    background-color: #e7bb41;
+}
+
+.ComputerScience {
+    background-color: #ab2346;
+}
+
+.Chemistry {
+    background-color: #44bba4;
+}
+
+.Mathematics {
+    background-color: #dd614a;
+}
+
+.Biology {
+    background-color: #7fb069;
+}
+
+.Statistics {
+    background-color: #231f20;
+}

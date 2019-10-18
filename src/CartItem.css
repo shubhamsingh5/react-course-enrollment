@@ -1,0 +1,11 @@
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid black;
+    list-style: none;
+}
+
+.cart-item__details p {
+    margin: 0;
+}

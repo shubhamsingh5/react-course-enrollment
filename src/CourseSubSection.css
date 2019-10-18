@@ -1,0 +1,23 @@
+.course__sub-section {
+    padding: 0 4px;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+}
+
+.course__sub-section p {
+    margin-bottom: 0;
+}
+
+.sub-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.sub-section__info {
+    margin-left: 8px;
+    margin-top: 2px;
+}
