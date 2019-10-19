@@ -2,6 +2,7 @@ import React from "react";
 import "./Course.css";
 import CourseSection from "./CourseSection";
 import CourseSubSection from "./CourseSubSection";
+import Button from './styles/Button'
 
 class Course extends React.Component {
     constructor(props) {
@@ -95,12 +96,12 @@ class Course extends React.Component {
                         {data.number} - {data.name}
                     </h1>
 
-                    <button
+                    <Button
                         className="btn-add"
                         onClick={e => addToCart(courseId, this.state.checkedSection, this.state.checkedSubSection, e)}
                     >
                         Add to cart
-                    </button>
+                    </Button>
                 </div>
 
                 <div
