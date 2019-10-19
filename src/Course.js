@@ -1,8 +1,9 @@
 import React from "react";
-import "./Course.css";
+import * as CourseStyles from "./styles/CourseStyles";
 import CourseSection from "./CourseSection";
 import CourseSubSection from "./CourseSubSection";
-import Button from './styles/Button'
+import { AddToCart } from "./styles/ButtonStyles";
+import Collapsible from "./styles/Collapsible";
 
 class Course extends React.Component {
     constructor(props) {
@@ -67,7 +68,7 @@ class Course extends React.Component {
         const { sections } = data;
         const lectures = Object.values(sections);
         const lectureNames = Object.keys(sections);
-        
+
         const subSectionToShow =
             this.state.showSubSection !== "" &&
             sections[this.state.showSubSection].subsections;
@@ -75,43 +76,45 @@ class Course extends React.Component {
         const subSectionTimes =
             this.state.showSubSection !== "" && Object.values(subSectionToShow);
 
-        const subSectionNames = this.state.showSubSection !== "" && Object.keys(subSectionToShow);
+        const subSectionNames =
+            this.state.showSubSection !== "" && Object.keys(subSectionToShow);
 
         return (
-            <div className="course">
-                <div className="course__metadata">
-                    <p
-                        className={`course__subject ${data.subject.replace(
-                            /\s+/g,
-                            ""
-                        )}`}
+            <CourseStyles.CourseStyles>
+                <CourseStyles.Metadata>
+                    <CourseStyles.Subject
+                        subject={data.subject.replace(/\s+/g, "")}
                     >
                         {data.subject}
-                    </p>
-                    <p className="course__credits">{data.credits} credits</p>
-                </div>
+                    </CourseStyles.Subject>
+                    <CourseStyles.Credits>
+                        {data.credits} credits
+                    </CourseStyles.Credits>
+                </CourseStyles.Metadata>
 
-                <div className="course__action">
-                    <h1 className="course__title" onClick={this.expand}>
+                <CourseStyles.Action>
+                    <h1 onClick={this.expand}>
                         {data.number} - {data.name}
                     </h1>
 
-                    <Button
-                        className="btn-add"
-                        onClick={e => addToCart(courseId, this.state.checkedSection, this.state.checkedSubSection, e)}
+                    <AddToCart
+                        onClick={e =>
+                            addToCart(
+                                courseId,
+                                this.state.checkedSection,
+                                this.state.checkedSubSection,
+                                e
+                            )
+                        }
                     >
                         Add to cart
-                    </Button>
-                </div>
+                    </AddToCart>
+                </CourseStyles.Action>
 
-                <div
-                    className={`collapsible${
-                        this.state.expanded ? " expanded" : ""
-                    }`}
-                >
-                    <p className="course__description">{data.description}</p>
-                    <div className="course__times">
-                        <div className="course__sections">
+                <Collapsible expanded={this.state.expanded}>
+                    <p>{data.description}</p>
+                    <CourseStyles.Times>
+                        <CourseStyles.Sections>
                             {lectures.map((lecture, index) => (
                                 <CourseSection
                                     key={index}
@@ -125,9 +128,9 @@ class Course extends React.Component {
                                     onToggleSection={this.toggleSubsections}
                                 />
                             ))}
-                        </div>
+                        </CourseStyles.Sections>
 
-                        <div className="course__subsections">
+                        <CourseStyles.Subsections>
                             {this.state.showSubSection !== "" &&
                                 subSectionTimes.map((time, index) => (
                                     <CourseSubSection
@@ -141,10 +144,10 @@ class Course extends React.Component {
                                         subsection={time}
                                     />
                                 ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </CourseStyles.Subsections>
+                    </CourseStyles.Times>
+                </Collapsible>
+            </CourseStyles.CourseStyles>
         );
     }
 }

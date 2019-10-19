@@ -3,6 +3,7 @@ import "./App.css";
 import Sidebar from "./Sidebar";
 import CourseArea from "./CourseArea";
 import Cart from "./Cart";
+import {OpenCart} from './styles/ButtonStyles'
 
 class App extends React.Component {
     constructor(props) {
@@ -17,7 +18,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        fetch("https://mysqlcs639.cs.wisc.edu:5000/classes")
+        fetch("https://mysqlcs639.cs.wisc.edu/classes/")
             .then(res => res.json())
             .then(data =>
                 this.setState({
@@ -110,9 +111,9 @@ class App extends React.Component {
                     toggleCart={this.toggleCart}
                     removeFromCart={this.removeFromCart}
                 />
-                <button className="btn-cart" onClick={this.toggleCart}>
+                <OpenCart className="btn-cart" onClick={this.toggleCart}>
                     Cart
-                </button>
+                </OpenCart>
             </>
         );
     }

@@ -1,6 +1,5 @@
 import React from "react";
 import Tag from "./Tag";
-import "./Tag.css"
 
 const TagList = ({ tags, removeTag }) => {
     return (

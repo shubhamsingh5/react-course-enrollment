@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./CartItem.css";
+import {CartItemStyles} from './styles/CartStyles'
+import {RemoveFromCart} from './styles/ButtonStyles'
 
 const CartItem = ({ cartItem, removeFromCart }) => {
     const { name, section, sectionName, subSection } = cartItem;
     const subsectionDetail = subSection && section.subsections[subSection];
 
     return (
-        <li className="cart-item">
+        <CartItemStyles>
             <div className="cart-item__info">
                 <h3>{name}</h3>
                 <div className="cart-item__details">
@@ -19,13 +20,12 @@ const CartItem = ({ cartItem, removeFromCart }) => {
                     {subSection && <p>{subSection}</p>}
                 </div>
             </div>
-            <button
-                className="btn-remove"
+            <RemoveFromCart
                 onClick={e => removeFromCart(cartItem, e)}
             >
                 &times;
-            </button>
-        </li>
+            </RemoveFromCart>
+        </CartItemStyles>
     );
 };
 
