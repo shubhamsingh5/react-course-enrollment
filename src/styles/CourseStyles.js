@@ -46,6 +46,7 @@ export const Credits = styled.div`
 export const Action = styled.div`
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1rem;
 
     h1 {
         cursor: pointer;

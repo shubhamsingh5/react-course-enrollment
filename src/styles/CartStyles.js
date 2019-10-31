@@ -8,7 +8,7 @@ const CartStyles = styled.div`
     height: 100%;
     top: 0;
     right: 0;
-    width: 25%;
+    width: 30%;
     /* min-width: 500px; */
     bottom: 0;
 
@@ -22,20 +22,19 @@ const CartStyles = styled.div`
 
     ul {
         margin-bottom: 0;
-        margin-top: 8px;
+        margin-top: 32px;
+        padding-inline-start: 0;
     }
 `;
 
 const CartItemStyles = styled.li`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
     padding: 1rem 0;
     border-bottom: 1px solid black;
     list-style: none;
 
-    &__details p {
-        margin: 0;
-    }
 `;
 
-export { CartStyles, CartItemStyles };
+export default CartStyles;

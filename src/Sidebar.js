@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import SearchAndFilter from "./SearchAndFilter";
 import TagList from "./TagList";
+import { SearchToggle } from "./styles/ButtonStyles";
 
 class Sidebar extends React.Component {
     constructor(props) {
@@ -70,37 +71,49 @@ class Sidebar extends React.Component {
         if (target.charCode === 13) {
             const newTag = this.search.current.value;
             if (!this.state.tags.includes(newTag)) {
-                this.setState(prevState => ({
-                    tags: [...prevState.tags, newTag]
-                }), this.setCourses);
+                this.setState(
+                    prevState => ({
+                        tags: [...prevState.tags, newTag]
+                    }),
+                    this.setCourses
+                );
             }
             this.search.current.value = "";
             // console.log(this.search.current.value);
         }
     };
 
-    searchUnion = (e) => {
+    searchUnion = e => {
         e.preventDefault();
-        this.setState({
-            selectedButton: 0
-        }, this.setCourses);
-    }
+        this.setState(
+            {
+                selectedButton: 0
+            },
+            this.setCourses
+        );
+    };
 
-    searchInter = (e) => {
+    searchInter = e => {
         e.preventDefault();
-        this.setState({
-            selectedButton: 1
-        }, this.setCourses)
-    }
+        this.setState(
+            {
+                selectedButton: 1
+            },
+            this.setCourses
+        );
+    };
 
     removeTag = (tag, e) => {
         e.preventDefault();
         let newArray = this.state.tags.filter(item => {
             return item !== tag;
         });
-        this.setState({
-            tags: newArray
-        }, this.setCourses)
+        this.setState(
+            {
+                tags: newArray
+            },
+            this.setCourses
+        );
     };
 
     render() {
@@ -109,9 +122,9 @@ class Sidebar extends React.Component {
                 <Card
                     style={{
                         width: "calc(20vw - 5px)",
-                        marginLeft: "5px",
-                        height: "calc(100vh - 10px)",
-                        position: "fixed"
+                        marginLeft: "5%",
+                        height: "calc(100vh)",
+                        position: "fixed",
                     }}
                 >
                     <Card.Body>
@@ -121,8 +134,18 @@ class Sidebar extends React.Component {
                             tags={this.state.tags}
                             removeTag={this.removeTag}
                         />
-                        <button onClick={e => this.searchUnion(e)}>Union</button>
-                        <button onClick={e => this.searchInter(e)}>Intersection</button>
+                        <SearchToggle
+                            selected={!this.state.selectedButton}
+                            onClick={e => this.searchUnion(e)}
+                        >
+                            Union
+                        </SearchToggle>
+                        <SearchToggle
+                            selected={this.state.selectedButton}
+                            onClick={e => this.searchInter(e)}
+                        >
+                            Intersection
+                        </SearchToggle>
                         <Form>
                             <Form.Group
                                 controlId="formKeywords"

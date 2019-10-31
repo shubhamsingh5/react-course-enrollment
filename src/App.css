@@ -53,3 +53,8 @@ select {
 	width: 100px;
 	padding: 5px;
 }
+
+.home-container {
+  display: flex;
+  
+}

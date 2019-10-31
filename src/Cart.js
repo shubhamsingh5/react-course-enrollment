@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CartItem from "./CartItem";
-import { CartStyles } from "./styles/CartStyles";
+import CartStyles from "./styles/CartStyles";
 import { CloseCart } from "./styles/ButtonStyles";
 
 export default class Cart extends Component {
