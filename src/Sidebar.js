@@ -121,10 +121,11 @@ class Sidebar extends React.Component {
             <>
                 <Card
                     style={{
-                        width: "calc(20vw - 5px)",
+                        width: "calc(20vw - 5rem)",
                         marginLeft: "5%",
                         height: "calc(100vh)",
                         position: "fixed",
+                        minWidth: "20rem"
                     }}
                 >
                     <Card.Body>

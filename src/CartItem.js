@@ -15,12 +15,11 @@ import { ReactComponent as TimeIcon } from "./assets/time.svg";
 
 const CartItem = ({ cartItem, removeFromCart }) => {
     const { name, section, sectionName, subSection } = cartItem;
-    const { instructor, location, subsections, time } = section;
 
-    const times = Object.keys(time);
+    const times = section && Object.keys(section.time);
 
-    const subsectionDetail = subSection && subsections[subSection];
-    const subTimes = Object.keys(subsectionDetail.time)
+    const subsectionDetail = subSection && section.subsections[subSection];
+    const subTimes = subSection && Object.keys(subsectionDetail.time)
     console.log(cartItem);
 
     return (
@@ -33,7 +32,7 @@ const CartItem = ({ cartItem, removeFromCart }) => {
                 {section ? (
                     <>
                         <UserIcon height="20" width="20" />
-                        <p className="instructor--name">{instructor}</p>
+                        <p className="instructor--name">{section.instructor}</p>
                     </>
                 ) : (
                     <p>All sections.</p>
@@ -45,7 +44,7 @@ const CartItem = ({ cartItem, removeFromCart }) => {
                     <div className="section__details">
                         <div className="section__location">
                             <LocationIcon />
-                            <p>{location}</p>
+                            <p>{section.location}</p>
                         </div>
                         <div className="section__time">
                             <TimeIcon height="24" width="24"/>
@@ -53,7 +52,7 @@ const CartItem = ({ cartItem, removeFromCart }) => {
                                 {times.map((key, index) => {
                                     return (
                                         <p key={key}>
-                                            {key}: {time[key]}
+                                            {key}: {section.time[key]}
                                         </p>
                                     );
                                 })}

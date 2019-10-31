@@ -17,7 +17,7 @@ class CourseArea extends React.Component {
 
   render() {
     return (
-      <div style={{marginLeft: '60px', marginTop: '5px'}}>
+      <div style={{marginLeft: '6rem', marginTop: '5px'}}>
         {this.getCourses()}
       </div>
     )

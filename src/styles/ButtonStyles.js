@@ -37,13 +37,12 @@ export const OpenCart = styled(Button)`
 export const CloseCart = styled(Button)`
     background: none;
     color: red;
-    font-size: 2.5rem;
+    font-size: 4rem;
     border: 0;
-    position: absolute;
+    /* position: absolute; */
     padding: 0 8px;
     z-index: 2;
-    right: 0;
- 
+    /* right: 3rem; */
     &:focus {
         outline: 0;
     }
