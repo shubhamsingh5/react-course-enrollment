@@ -2,15 +2,16 @@ import styled from "styled-components";
 
 export const CartListItem = styled.li`
     list-style: none;
+    color: #515C6F;
     background-color: rgba(255, 228, 151, 0.6);
-    border-radius: 12px;
+    border-radius: 1.2rem;
     padding: 2.4rem;
     box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.2);
     margin-top: 2rem;
     margin-bottom: 2rem;
     p {
         margin: 0;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 `;
 
@@ -20,7 +21,7 @@ export const ItemHeader = styled.div`
     align-items: center;
 
     h3 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 `;
 
@@ -29,20 +30,20 @@ export const Instructor = styled.div`
     align-items: center;
 
     .instructor--name {
-        font-size: 1.6rem;
+        font-size: 1.2rem;
         margin: 0;
-        margin-left: 10px;
+        margin-left: 1rem;
     }
 `;
 
 export const Section = styled.div`
     display: flex;
     margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
 
     .section__details {
-        margin-left: 24px;
+        margin-left: 2.4rem;
     }
     .section__location {
         display: flex;
@@ -54,9 +55,10 @@ export const Section = styled.div`
     .section__time {
         display: flex;
         align-items: center;
+        margin-top: 0.5rem;
 
         svg {
-            padding-left: 4px;
+            padding-left: .4rem;
         }
     }
     .times {
@@ -79,7 +81,7 @@ export const Section = styled.div`
 
 export const Subsection = styled.div`
     display: flex;
-    margin-top: 2rem;
+    margin-top: 1rem;
 
     .subsection__details {
         margin-left: 2.4rem;
@@ -95,12 +97,13 @@ export const Subsection = styled.div`
     .subsection__time {
         display: flex;
         align-items: center;
+        margin-top: 0.5rem;
 
         svg {
             display: flex;
 
             svg {
-                padding-left: 4px;
+                padding-left: .4rem;
             }
         }
     }

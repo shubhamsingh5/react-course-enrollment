@@ -12,6 +12,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-color: aliceblue !important;
     font-size: 1.6rem;
+    
+    color: #515C6F;
 }
 
 code {

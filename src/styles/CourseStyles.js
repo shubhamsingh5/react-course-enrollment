@@ -18,11 +18,13 @@ const subjectColors = subject => {
 };
 
 export const CourseStyles = styled.div`
-    margin: 20px;
-    padding: 16px;
+    margin: 2rem;
+    padding: 1.6rem;
     width: 60%;
     background-color: white;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    font-size: 1.6rem;
+    color: #515C6F;
 `;
 
 export const Metadata = styled.div`

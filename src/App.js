@@ -34,7 +34,7 @@ class App extends React.Component {
             );
     }
 
-    getSubjects = (data) => {
+    getSubjects = data => {
         let subjects = [];
         subjects.push("All");
 
@@ -44,11 +44,11 @@ class App extends React.Component {
         }
 
         return subjects;
-    }
+    };
 
-    setCourses = (courses) => {
+    setCourses = courses => {
         this.setState({ filteredCourses: courses });
-    }
+    };
 
     toggleCart = () => {
         this.setState(prevState => ({
@@ -70,12 +70,8 @@ class App extends React.Component {
     addToCart = (course, section, subsection, e) => {
         e.preventDefault();
         const courseData = this.state.filteredCourses[course];
-        const scheduled = {
-            name: courseData.name,
-            number: courseData.number,
-            section: courseData.sections,
-        }
         const cartData = {
+            key: course,
             name: courseData.name,
             number: courseData.number
         };
@@ -83,20 +79,95 @@ class App extends React.Component {
         if (section !== "") {
             cartData.sectionName = section;
             cartData.section = courseData.sections[section];
-            scheduled.section = courseData.sections[section];
         }
 
         if (subsection !== "") {
             cartData.subSection = subsection;
-            scheduled.subSection = courseData.sections[section].subsections[subsection];
         }
 
         if (!this.state.cart.includes(cartData)) {
-            this.setState(prevState => ({
-                cart: [...prevState.cart, cartData],
-                coursesToSchedule: [...prevState.coursesToSchedule, scheduled]
-            }));
+            this.setState(
+                prevState => ({
+                    cart: [...prevState.cart, cartData],
+                    cartOpen: true
+                }),
+                this.goToScheduler
+            );
         }
+    };
+
+    goToScheduler = () => {
+        let newSchedules = [];
+        for (const c of this.state.cart) {
+            let course = {
+                name: "",
+                number: "",
+                sections: []
+            };
+            // console.log(c);
+            course.name = c.name;
+            course.number = c.number;
+            let courseData = this.state.filteredCourses[c.key];
+            if (!c.sectionName) {
+                for (const sectionName of Object.keys(courseData.sections)) {
+                    let section = courseData.sections[sectionName];
+
+                    let newSection = {
+                        name: sectionName,
+                        time: "",
+                        subsections: []
+                    };
+                    newSection.time = section.time;
+                    for (const subSectionName of Object.keys(
+                        section.subsections
+                    )) {
+                        let newSubsection = {
+                            name: subSectionName,
+                            time: ""
+                        };
+                        newSubsection.name = subSectionName;
+                        newSubsection.time =
+                            section.subsections[subSectionName].time;
+                        newSection.subsections.push(newSubsection);
+                    }
+                    course.sections.push(newSection);
+                }
+            } else {
+                let section = courseData.sections[c.sectionName];
+                let newSection = {
+                    name: c.sectionName,
+                    time: "",
+                    subsections: []
+                };
+                newSection.time = section.time;
+                if (!c.subSection) {
+                    for (const subSectionName of Object.keys(
+                        section.subsections
+                    )) {
+                        let subSection = section.subsections[subSectionName];
+                        let newSubsection = {
+                            name: subSectionName,
+                            time: ""
+                        };
+                        newSubsection.time = subSection.time;
+                        newSection.subsections.push(newSubsection);
+                    }
+                } else {
+                    let subSection = section.subsections[c.subSection];
+                    let newSubsection = {
+                        name: c.subSection,
+                        time: ""
+                    };
+                    newSubsection.time = subSection.time;
+                    newSection.subsections.push(newSubsection);
+                }
+                course.sections.push(newSection);
+            }
+            newSchedules.push(course);
+        }
+        this.setState(prevState => ({
+            coursesToSchedule: newSchedules
+        }));
     };
 
     render() {
@@ -106,11 +177,13 @@ class App extends React.Component {
                     <Nav />
                     <Switch>
                         <Route path="/scheduler">
-                            <Scheduler 
+                            <Scheduler
                                 cart={this.state.cart}
+                                schedules={this.state.coursesToSchedule}
+                                removeFromCart={this.removeFromCart}
                             />
                         </Route>
-                        <Router path="/planner">
+                        <Router path="/search">
                             <CourseSearch
                                 cart={this.state.cart}
                                 cartOpen={this.state.cartOpen}
@@ -124,7 +197,7 @@ class App extends React.Component {
                             />
                         </Router>
                         <Route path="/">
-                            <Redirect exact from="" to="/planner" />
+                            <Redirect exact from="" to="/search" />
                         </Route>
                     </Switch>
                 </div>

@@ -19,9 +19,13 @@ const NavStyles = styled.ul`
         margin-top: 50px;
     }
     svg {
-        fill: blue;
+        fill: #515C6F;
         overflow: hidden;
         vertical-align: middle;
+    }
+
+    svg:hover {
+        fill: #006dcc;
     }
 `;
 

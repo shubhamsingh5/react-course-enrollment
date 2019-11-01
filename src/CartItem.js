@@ -19,19 +19,21 @@ const CartItem = ({ cartItem, removeFromCart }) => {
     const times = section && Object.keys(section.time);
 
     const subsectionDetail = subSection && section.subsections[subSection];
-    const subTimes = subSection && Object.keys(subsectionDetail.time)
-    console.log(cartItem);
+    const subTimes = subSection && Object.keys(subsectionDetail.time);
+    // console.log(cartItem);
 
     return (
         <CartListItem>
             <ItemHeader>
                 <h3>{name}</h3>
-                <DeleteIcon />
+                <RemoveFromCart onClick={e => removeFromCart(cartItem, e)}>
+                    <DeleteIcon />
+                </RemoveFromCart>
             </ItemHeader>
             <Instructor>
                 {section ? (
                     <>
-                        <UserIcon height="20" width="20" />
+                        <UserIcon height="18" width="18" />
                         <p className="instructor--name">{section.instructor}</p>
                     </>
                 ) : (
@@ -43,11 +45,11 @@ const CartItem = ({ cartItem, removeFromCart }) => {
                     <p>{sectionName}</p>
                     <div className="section__details">
                         <div className="section__location">
-                            <LocationIcon />
+                            <LocationIcon height="20" width="20" />
                             <p>{section.location}</p>
                         </div>
                         <div className="section__time">
-                            <TimeIcon height="24" width="24"/>
+                            <TimeIcon height="20" width="20" />
                             <div className="times">
                                 {times.map((key, index) => {
                                     return (
@@ -66,11 +68,11 @@ const CartItem = ({ cartItem, removeFromCart }) => {
                     <p>{subSection}</p>
                     <div className="subsection__details">
                         <div className="subsection__location">
-                            <LocationIcon />
+                            <LocationIcon height="20" width="20" />
                             <p>{subsectionDetail.location}</p>
                         </div>
                         <div className="subsection__time">
-                            <TimeIcon height="24" width="24"/>
+                            <TimeIcon height="20" width="20" />
                             <div className="times">
                                 {subTimes.map((key, index) => {
                                     return (
@@ -88,21 +90,6 @@ const CartItem = ({ cartItem, removeFromCart }) => {
             )}
         </CartListItem>
     );
-    {
-        /* <RemoveFromCart onClick={e => removeFromCart(cartItem, e)}>
-                &times;
-            </RemoveFromCart>
-            <div className="cart-item__info">
-                <div className="cart-item__details">
-                    {section && (
-                        <p>
-                            {sectionName} : {section.instructor}
-                        </p>
-                    )}
-                    {subSection && <p>{subSection}</p>}
-                </div>
-            </div> */
-    }
 };
 
 CartItem.propTypes = {

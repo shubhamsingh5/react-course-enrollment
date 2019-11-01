@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-    font-size: 1em;
+    font-size: 1.6rem;
     background: none;
     padding: 0.25em 1em;
     border-radius: 3px;
     transition: 0.2s all;
+    max-height: 4rem;
+    overflow: hidden;
+    text-overflow: none;
+    white-space: nowrap;
 
     &:focus {
         outline: 0;
@@ -57,12 +61,19 @@ export const RemoveFromCart = styled(Button)`
     transform: translateY(-4px);
 
     &:hover {
-        color: red;
+        fill: red;
         cursor: pointer;
     }
 `;
 
-export const RemoveTag = styled(Button)``;
+export const RemoveTag = styled(Button)`
+    font-size: 2rem;
+    background: none;
+    border: 0;
+    padding: 0;
+    padding-left: 1rem;
+    color: white;
+`;
 
 export const SearchToggle = styled(Button)`
     border: 2px solid #006dcc;
@@ -74,4 +85,11 @@ export const SearchToggle = styled(Button)`
         background: #006dcc;
         color: #fff;
     }
+`;
+
+export const ChangeSchedule = styled(Button)`
+    font-size: 2rem;
+    background: none;
+    border: 0;
+    padding: 0;
 `;

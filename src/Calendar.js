@@ -17,14 +17,14 @@ class Calendar extends Component {
     render() {
         return (
             <CalendarStyles.Calendar>
-                <Day
+                {/* <Day
                     title={"Column 1"}
                     blocks={this.state.blocks}
                     start={7}
                     end={19}
                     height={500}
                     width="20vw"
-                />
+                /> */}
             </CalendarStyles.Calendar>
         );
     }
