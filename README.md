@@ -1,3 +1,5 @@
+This app was built for UW-Madison's CS 639 - User Interface Design. The requirements for the assignment are below.
+
 # Assignment: React 3 (6 Points Total)
 
 This assignment is meant to introduce you to more features of React. This project is the third of a four part React project in which you will build a course scheduling application. This application uses a limited quantity of modified data from the UW Madison course information database.
