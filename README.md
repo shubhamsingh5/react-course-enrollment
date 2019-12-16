@@ -91,6 +91,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
+---
+
 # Assignment: React 2 (2 Points Total)
 
 This assignment is meant to introduce you to more features of React, e.g. states, props, more modularized components etc... This project is the 2nd of a 4 part React project. 
